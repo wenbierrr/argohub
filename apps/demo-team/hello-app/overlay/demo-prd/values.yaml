@@ -1,5 +1,4 @@
 image:
-  repository: docker.io/wenbin681/filestash
-  tag: "v2.8.0"
+  tag: "stable-alpine"
 service:
   port: 8080
