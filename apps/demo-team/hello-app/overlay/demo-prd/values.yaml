@@ -1,5 +1,5 @@
 image:
-  repository: nginx
+  repository: nginx/nginx-unprivileged
   tag: "1.24"
 service:
   port: 8080
