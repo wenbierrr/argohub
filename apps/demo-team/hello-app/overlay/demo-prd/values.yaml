@@ -1,5 +1,5 @@
 image:
   repository: docker.io/wenbin681/filestash
-  tag: "2.8"
+  tag: "2.8.0"
 service:
   port: 8080
