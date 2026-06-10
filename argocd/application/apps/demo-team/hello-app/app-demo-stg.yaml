@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello-app-demo-stg
+  namespace: openshift-gitops
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/wenbierrr/helm-charts
+      path: charts/demo-team/hello-app
+      targetRevision: main
+      helm:
+        valueFiles:
+          - $values/apps/demo-team/hello-app/base/values.yaml
+          - $values/apps/demo-team/hello-app/overlay/demo-stg/values.yaml
+    - repoURL: https://github.com/wenbierrr/argohub
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: demo-stg
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=false
