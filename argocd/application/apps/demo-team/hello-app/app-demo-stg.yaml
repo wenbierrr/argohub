@@ -18,7 +18,7 @@ spec:
       ref: values
   destination:
     server: https://kubernetes.default.svc
-    namespace: demo-stg
+    namespace: stg
   syncPolicy:
     syncOptions:
       - CreateNamespace=false
