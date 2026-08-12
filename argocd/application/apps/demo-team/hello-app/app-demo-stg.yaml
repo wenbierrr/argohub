@@ -6,14 +6,14 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://github.com/wenbierrr/helm-charts
+    - repoURL: http://gitlab.apps-crc.testing/starforge/helm-charts.git
       path: charts/demo-team/hello-app
       targetRevision: main
       helm:
         valueFiles:
           - $values/apps/demo-team/hello-app/base/values.yaml
           - $values/apps/demo-team/hello-app/overlay/demo-stg/values.yaml
-    - repoURL: https://github.com/wenbierrr/argohub
+    - repoURL: http://gitlab.apps-crc.testing/starforge/argohub.git
       targetRevision: main
       ref: values
   destination:
