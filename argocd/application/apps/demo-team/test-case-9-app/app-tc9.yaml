@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: invoice-api-tc9
+  namespace: openshift-gitops
+spec:
+  project: default
+  sources:
+    - repoURL: http://gitlab.apps-crc.testing/starforge/helm-charts.git
+      path: charts/demo-team/test-case-9-app
+      targetRevision: main
+      helm:
+        valueFiles:
+          - $values/apps/demo-team/test-case-9-app/base/values.yaml
+          - $values/apps/demo-team/test-case-9-app/overlay/demo-stg/values.yaml
+    - repoURL: http://gitlab.apps-crc.testing/starforge/argohub.git
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: tc9
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=false
